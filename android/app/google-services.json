@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "641967585872",
-    "project_id": "field-flow-app",
-    "storage_bucket": "field-flow-app.firebasestorage.app"
+    "project_number": "317390332047",
+    "project_id": "field-flow-app-59e13",
+    "storage_bucket": "field-flow-app-59e13.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:641967585872:android:23d9d9a1ca0a0e236cef55",
+        "mobilesdk_app_id": "1:317390332047:android:e4fdbd4736b451eb1810fa",
         "android_client_info": {
           "package_name": "com.example.field_flow"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBckRBftT5h-JML3T_Au8pUi4Vf10XeQEY"
+          "current_key": "AIzaSyCSB9yhGJwy1aggYzbPcHY7KpQK2Al9fA0"
         }
       ],
       "services": {

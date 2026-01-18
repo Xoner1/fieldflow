@@ -1,26 +1,37 @@
 import 'package:flutter/material.dart';
-import 'core/config/app_config.dart'; // Import AppConfig
-import 'features/shared/splash/splash_screen.dart'; // Import SplashScreen
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart'; 
 
-void main() {
-  runApp(const FieldFlowApp());
+// CORRECTED IMPORT PATH based on your logs:
+import 'features/shared/auth/login_screen.dart'; 
+
+void main() async {
+  // 1. Ensure Flutter bindings are initialized
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // 2. Initialize Firebase
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  // 3. Run the App
+  runApp(const MyApp());
 }
 
-class FieldFlowApp extends StatelessWidget {
-  const FieldFlowApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: AppConfig.appName, // Use dynamic name
       debugShowCheckedModeBanner: false,
+      title: 'FieldFlow',
       theme: ThemeData(
-        primaryColor: AppConfig.primaryColor,
-        colorScheme: ColorScheme.fromSeed(seedColor: AppConfig.primaryColor),
+        primarySwatch: Colors.blue,
         useMaterial3: true,
       ),
-      // Start with the Splash Screen
-      home: const SplashScreen(),
+      // Set LoginScreen as the home page
+      home: const LoginScreen(),
     );
   }
-}
+} 

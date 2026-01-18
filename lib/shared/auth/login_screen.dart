@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../../../core/config/app_config.dart';
 import '../../../services/auth_service.dart';
 import '../../../services/database_service.dart';
-// Import the new Dashboard Screen
-import '../../admin/dashboard/admin_dashboard_screen.dart';
+
+import '../../features/admin/dashboard/admin_dashboard_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

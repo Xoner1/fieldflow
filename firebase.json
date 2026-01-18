@@ -1,1 +1,82 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"field-flow-app","appId":"1:641967585872:android:23d9d9a1ca0a0e236cef55","fileOutput":"android/app/google-services.json"}},"ios":{"default":{"projectId":"field-flow-app","appId":"1:641967585872:ios:d7dd5367f6a01b2d6cef55","uploadDebugSymbols":false,"fileOutput":"ios/Runner/GoogleService-Info.plist"}},"macos":{"default":{"projectId":"field-flow-app","appId":"1:641967585872:ios:d7dd5367f6a01b2d6cef55","uploadDebugSymbols":false,"fileOutput":"macos/Runner/GoogleService-Info.plist"}},"dart":{"lib/firebase_options.dart":{"projectId":"field-flow-app","configurations":{"android":"1:641967585872:android:23d9d9a1ca0a0e236cef55","ios":"1:641967585872:ios:d7dd5367f6a01b2d6cef55","macos":"1:641967585872:ios:d7dd5367f6a01b2d6cef55","web":"1:641967585872:web:ceac67c095fb374e6cef55","windows":"1:641967585872:web:a315da7dbf32e2626cef55"}}}}}}
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "field-flow-app-59e13",
+          "appId": "1:317390332047:android:e4fdbd4736b451eb1810fa",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "ios": {
+        "default": {
+          "projectId": "field-flow-app-59e13",
+          "appId": "1:317390332047:ios:670c97f4cce1cf3d1810fa",
+          "uploadDebugSymbols": false,
+          "fileOutput": "ios/Runner/GoogleService-Info.plist"
+        }
+      },
+      "macos": {
+        "default": {
+          "projectId": "field-flow-app-59e13",
+          "appId": "1:317390332047:ios:670c97f4cce1cf3d1810fa",
+          "uploadDebugSymbols": false,
+          "fileOutput": "macos/Runner/GoogleService-Info.plist"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "field-flow-app-59e13",
+          "configurations": {
+            "android": "1:317390332047:android:e4fdbd4736b451eb1810fa",
+            "ios": "1:317390332047:ios:670c97f4cce1cf3d1810fa",
+            "macos": "1:317390332047:ios:670c97f4cce1cf3d1810fa",
+            "web": "1:317390332047:web:59afb4ebf0f7b3e21810fa",
+            "windows": "1:317390332047:web:e782f86eaf0042751810fa"
+          }
+        }
+      }
+    }
+  },
+  "emulators": {
+    "apphosting": {
+      "port": 5002,
+      "rootDirectory": "./"
+    },
+    "auth": {
+      "port": 9099
+    },
+    "functions": {
+      "port": 5001
+    },
+    "firestore": {
+      "port": 8080
+    },
+    "database": {
+      "port": 9000
+    },
+    "hosting": {
+      "port": 5000
+    },
+    "pubsub": {
+      "port": 8085
+    },
+    "storage": {
+      "port": 9199
+    },
+    "eventarc": {
+      "port": 9299
+    },
+    "dataconnect": {
+      "port": 9399,
+      "dataDir": "dataconnect/.dataconnect/pgliteData"
+    },
+    "tasks": {
+      "port": 9499
+    },
+    "ui": {
+      "enabled": true
+    },
+    "singleProjectMode": true
+  }
+}
