@@ -1,56 +1,48 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart'; // For debugPrint
-import '../models/user_model.dart'; // Import the new model
+import '../models/user_model.dart';
 
 class DatabaseService {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
-  // 1. Get User Role (Used in Login)
-  Future<String?> getUserRole(String email) async {
-    try {
-      QuerySnapshot snapshot = await _db
-          .collection('users')
-          .where('email', isEqualTo: email)
-          .limit(1)
-          .get();
+  // Collection References
+  final String _usersCollection = 'users';
 
-      if (snapshot.docs.isNotEmpty) {
-        var userDoc = snapshot.docs.first;
-        Map<String, dynamic> data = userDoc.data() as Map<String, dynamic>;
-        return data['role'] as String?;
-      } else {
-        debugPrint('No user found with email: $email');
-        return null;
-      }
+  // 1. Create or Update User Data
+  Future<void> createUser(UserModel user) async {
+    try {
+      await _db.collection(_usersCollection).doc(user.id).set(user.toMap());
     } catch (e) {
-      debugPrint('Error fetching user role: $e');
-      return null;
+      // In production, use a logger instead of print
+      print("Error creating user: $e"); 
+      rethrow;
     }
   }
 
-  // 2. Add User (Used for Setup & later for Admin to add workers)
-  Future<void> addUser(String userId, Map<String, dynamic> userData) async {
-    try {
-      await _db.collection('users').doc(userId).set(userData);
-      debugPrint('User added to Firestore: $userId');
-   } catch (e) {
-      debugPrint('Error adding user: $e');
-      rethrow; 
-    }
-  }
-
-  // 3. Get Workers Stream (New Feature 🌟)
-  // This opens a live connection to the database
+  // 2. Get Real-time Stream of Workers only
   Stream<List<UserModel>> getWorkersStream() {
     return _db
-        .collection('users')
-        .where('role', isEqualTo: 'worker') // Filter: Only workers
-        .snapshots() // This makes it a Stream (Live updates)
+        .collection(_usersCollection)
+        .where('role', isEqualTo: 'worker')
+        .snapshots()
         .map((snapshot) {
-      // Convert the raw data (JSON) into a List of UserModels
       return snapshot.docs.map((doc) {
         return UserModel.fromMap(doc.data(), doc.id);
       }).toList();
     });
+  }
+
+  // 3. Get User Role (Fixing the undefined_method error)
+  Future<String?> getUserRole(String uid) async {
+    try {
+      DocumentSnapshot doc = await _db.collection(_usersCollection).doc(uid).get();
+      if (doc.exists && doc.data() != null) {
+        Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+        return data['role'] as String?;
+      }
+      return null;
+    } catch (e) {
+      print("Error getting user role: $e");
+      return null;
+    }
   }
 }

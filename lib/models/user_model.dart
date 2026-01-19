@@ -1,32 +1,34 @@
 class UserModel {
   final String id;
-  final String email;
   final String name;
-  final String role; // 'admin' or 'worker'
+  final String email;
+  final String role;
 
   UserModel({
     required this.id,
-    required this.email,
     required this.name,
+    required this.email,
     required this.role,
   });
 
-  // Factory constructor to create a User from Firestore data (Map)
-  factory UserModel.fromMap(Map<String, dynamic> data, String documentId) {
-    return UserModel(
-      id: documentId,
-      email: data['email'] ?? '',
-      name: data['name'] ?? 'Unknown',
-      role: data['role'] ?? 'worker',
-    );
-  }
-
-  // Method to convert User object back to Map (for uploading to Firestore)
+  // Convert User object to Map (for Firestore)
   Map<String, dynamic> toMap() {
     return {
-      'email': email,
+      'id': id,
       'name': name,
+      'email': email,
       'role': role,
     };
+  }
+
+  // Create User object from Firestore Map
+  factory UserModel.fromMap(Map<String, dynamic> map, String documentId) {
+    return UserModel(
+      // Use the document ID from Firestore if the field is missing inside data
+      id: documentId, 
+      name: map['name'] ?? '',
+      email: map['email'] ?? '',
+      role: map['role'] ?? 'worker',
+    );
   }
 }
