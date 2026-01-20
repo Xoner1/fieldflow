@@ -41,7 +41,7 @@ Are you looking to revolutionize your business operations or discuss technical c
 ---
 
 ## ⚙️ Setup Instructions
-1.  **Clone:** `git clone https://github.com/Xoner1/field_flow.git`
+1.  **Clone:** `https://github.com/Xoner1/fieldflow.git`
 2.  **Dependencies:** `flutter pub get`
 3.  **Firebase:** You must add your own `google-services.json` and `GoogleService-Info.plist` to enable the backend features.
 4.  **Run:** `flutter run`
